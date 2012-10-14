@@ -19,7 +19,7 @@ public class InvestmentAccountTest {
 
     @Test
     public void should_distribute_full_amount_to_sole_participant() {
-        Participant participant = new Participant(1);
+        Participant participant = new Participant("1234", 1);
         subject.addParticipantShares(participant);
 
         subject.distributeBalance();
@@ -30,8 +30,8 @@ public class InvestmentAccountTest {
 
     @Test
     public void should_distribute_balance_according_to_participant_shares() {
-        Participant participant1 = new Participant(3);
-        Participant participant2 = new Participant(1);
+        Participant participant1 = new Participant("1234",3);
+        Participant participant2 = new Participant("1234",1);
 
         subject.addParticipantShares(participant1);
         subject.addParticipantShares(participant2);
@@ -45,8 +45,8 @@ public class InvestmentAccountTest {
 
     @Test
     public void should_keep_remainder_in_account() {
-        Participant participant1 = new Participant(2);
-        Participant participant2 = new Participant(1);
+        Participant participant1 = new Participant("1234",2);
+        Participant participant2 = new Participant("1234",1);
 
         subject.addParticipantShares(participant1);
         subject.addParticipantShares(participant2);
@@ -60,7 +60,7 @@ public class InvestmentAccountTest {
 
     @Test
     public void should_not_distribute_when_amount_per_share_is_less_than_one_cent() {
-        Participant participant = new Participant(1001);
+        Participant participant = new Participant("1234",1001);
         subject.addParticipantShares(participant);
 
         subject.distributeBalance();

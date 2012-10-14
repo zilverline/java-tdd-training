@@ -1,8 +1,12 @@
 package com.zilverline.tdd.domain;
 
 import javax.persistence.Basic;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+
 
 @Entity
 public class Participant {
@@ -15,19 +19,25 @@ public class Participant {
     @Basic
     private String bankAccountNumber;
 
+    @ManyToOne
+    private InvestmentAccount investmentAccount;
+    
+    @Embedded
     private Money balance = Money.ZERO;
 
     public Participant() {
     }
 
-    public Participant(long shares) {
-        this.shares = shares;
+    public Participant(String bankAccountNumber, long shares) {
+      this.bankAccountNumber = bankAccountNumber;  
+      this.shares = shares;
     }
 
     public long getShares() {
         return shares;
     }
 
+    @Transient
     public Money getBalance() {
         return balance;
     }

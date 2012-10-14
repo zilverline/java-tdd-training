@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -17,6 +18,7 @@ public class InvestmentAccount {
     @OneToMany(cascade={CascadeType.PERSIST}, mappedBy="investmentAccount")
     private Set<Participant> participants = new HashSet<Participant>();
 
+    @Embedded
     private Money balance;
 
     public InvestmentAccount() {

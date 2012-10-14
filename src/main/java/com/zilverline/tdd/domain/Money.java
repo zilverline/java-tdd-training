@@ -3,9 +3,12 @@ package com.zilverline.tdd.domain;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import javax.persistence.Embeddable;
+
 import com.google.common.base.Preconditions;
 
-public final class Money implements Comparable<Money> {
+@Embeddable
+public class Money implements Comparable<Money> {
 
     private static final int SCALE = 2;
     private static final BigDecimal CENTS_PER_EURO = BigDecimal.ONE.scaleByPowerOfTen(SCALE);
