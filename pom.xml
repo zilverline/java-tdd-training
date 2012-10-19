@@ -90,6 +90,11 @@
             <version>2.4</version>
         </dependency>
         <dependency>
+            <groupId>org.jbehave</groupId>
+            <artifactId>jbehave-maven-plugin</artifactId>
+            <version>4.0-beta-1</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.2.1</version>
@@ -221,6 +226,17 @@
         </dependency>
     </dependencies>
     <build>
+          <resources>
+          <resource>
+            <directory>${basedir}/src/main/resources</directory>
+            <filtering>true</filtering>
+          </resource>
+          <resource>
+            <directory>${basedir}/src/main/stories</directory>
+            <filtering>true</filtering>
+          </resource>
+        </resources>
+    
         <plugins>
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>

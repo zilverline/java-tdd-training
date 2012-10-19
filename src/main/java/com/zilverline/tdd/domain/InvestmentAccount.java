@@ -1,6 +1,7 @@
 package com.zilverline.tdd.domain;
 
 import java.math.RoundingMode;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -54,5 +55,9 @@ public class InvestmentAccount {
             distributed = distributed.add(amount);
         }
         balance = balance.subtract(distributed);
+    }
+
+    public Set<Participant> getParticipants() {
+      return Collections.unmodifiableSet(participants);
     }
 }
