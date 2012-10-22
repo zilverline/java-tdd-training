@@ -35,6 +35,6 @@ public abstract class AbstractStory extends JUnitStory implements StoryPathResol
   
   @Override
   public String resolve(Class<? extends Embeddable> embeddableClass) {
-    return embeddableClass.getSimpleName().replace("Story", "").concat(".story");
+    return embeddableClass.getSimpleName().replace("Story", ".story");
   }
 }

@@ -34,8 +34,7 @@ public class InvestmentAccountStory extends AbstractStory {
     
     @Then("Participant $bankAccountNumber has $euro euros and $cents cents")
     public void checkBalance(String bankAccountNumber, Integer euros, Integer cents) {
-      Participant p = getParticipant(bankAccountNumber);
-      assertThat(p.getBalance(), is(Money.fromEurosAndCents(euros, cents)));
+      assertThat(getParticipant(bankAccountNumber).getBalance(), is(Money.fromEurosAndCents(euros, cents)));
     }
     
     private Participant getParticipant(String bankAccountNumber) {
