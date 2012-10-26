@@ -18,7 +18,7 @@ public class InvestmentAccountTest {
     @Test
     public void should_distribute_full_amount_to_sole_participant() {
         Participant participant = new Participant("1234", 1);
-        subject.addParticipantShares(participant);
+        subject.addParticipant(participant);
 
         subject.distributeBalance();
 
@@ -31,8 +31,8 @@ public class InvestmentAccountTest {
         Participant participant1 = new Participant("1234",3);
         Participant participant2 = new Participant("1234",1);
 
-        subject.addParticipantShares(participant1);
-        subject.addParticipantShares(participant2);
+        subject.addParticipant(participant1);
+        subject.addParticipant(participant2);
 
         subject.distributeBalance();
 
@@ -46,8 +46,8 @@ public class InvestmentAccountTest {
         Participant participant1 = new Participant("1234",2);
         Participant participant2 = new Participant("1234",1);
 
-        subject.addParticipantShares(participant1);
-        subject.addParticipantShares(participant2);
+        subject.addParticipant(participant1);
+        subject.addParticipant(participant2);
 
         subject.distributeBalance();
 
@@ -59,7 +59,7 @@ public class InvestmentAccountTest {
     @Test
     public void should_not_distribute_when_amount_per_share_is_less_than_one_cent() {
         Participant participant = new Participant("1234",1001);
-        subject.addParticipantShares(participant);
+        subject.addParticipant(participant);
 
         subject.distributeBalance();
 

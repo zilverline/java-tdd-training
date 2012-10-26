@@ -65,7 +65,7 @@ public class JpaHibernateDaoTest {
 
     private Participant givenParticipantWithBalance(Money balance) {
         Participant participant = new Participant("1233211234", 1);
-        investmentAccount.addParticipantShares(participant);
+        investmentAccount.addParticipant(participant);
         participant.addBalance(balance);
         entityManager.persist(participant);
         return participant;

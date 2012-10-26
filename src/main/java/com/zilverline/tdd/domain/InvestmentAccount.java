@@ -34,9 +34,15 @@ public class InvestmentAccount {
         this.balance = initialBalance;
     }
 
-    public void addParticipantShares(Participant participant) {
+    public void addParticipant(Participant participant) {
         participant.setInvestmentAccount(this);
         participants.add(participant);
+    }
+
+    public void removeParticipant(Participant participant) {
+        if (participants.remove(participant)) {
+            participant.setInvestmentAccount(null);
+        }
     }
 
     public Money getBalance() {
@@ -66,9 +72,18 @@ public class InvestmentAccount {
       return Collections.unmodifiableSet(participants);
     }
 
+    public long getTotalShares() {
+        long result = 0;
+        for (Participant participant : participants) {
+            result += participant.getShares();
+        }
+        return result;
+    }
+
     @Override
     public String toString() {
         return "InvestmentAccount(id=" + id + ", balance=" + balance + ")";
     }
+
 
 }

@@ -1,5 +1,8 @@
 package com.zilverline.tdd.domain;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -60,6 +63,13 @@ public class Participant {
 
     public void setInvestmentAccount(InvestmentAccount investmentAccount) {
         this.investmentAccount = investmentAccount;
+    }
+
+    public boolean isSignificantShareholder() {
+        BigDecimal limit = new BigDecimal("0.05");
+        long totalShares = investmentAccount.getTotalShares();
+        BigDecimal share = BigDecimal.valueOf(shares).divide(BigDecimal.valueOf(totalShares), 2, RoundingMode.DOWN);
+        return share.compareTo(limit) >= 0;
     }
 
     @Override

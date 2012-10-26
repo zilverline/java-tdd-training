@@ -24,7 +24,7 @@ public class InvestmentAccountStory extends AbstractStory {
     
     @Given("Participant $bankAccountNumber with $number shares")
     public void participant_with_shares(String bankAccountNumber, Long shares) {
-        subject.addParticipantShares(new Participant(bankAccountNumber, shares));
+        subject.addParticipant(new Participant(bankAccountNumber, shares));
     }
 
     @When("the balance is distributed")
