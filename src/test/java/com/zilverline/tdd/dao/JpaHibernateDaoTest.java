@@ -23,7 +23,7 @@ import com.zilverline.tdd.domain.Money;
 import com.zilverline.tdd.domain.Participant;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes={ DatabaseConfig.class, PersistenceConfig.class})
+@ContextConfiguration(classes={ TestDatabaseConfig.class, PersistenceConfig.class})
 @TestExecutionListeners({TransactionalTestExecutionListener.class, DependencyInjectionTestExecutionListener.class})
 @Transactional
 public class JpaHibernateDaoTest {

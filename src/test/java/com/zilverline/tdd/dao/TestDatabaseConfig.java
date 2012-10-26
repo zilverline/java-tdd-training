@@ -12,7 +12,7 @@ import com.zilverline.tdd.config.PersistenceConfig;
 @Configuration
 @ComponentScan(basePackages = { "com.zilverline.tdd.dao", "com.zilverline.tdd.domain" })
 @Import({ PersistenceConfig.class })
-public class DatabaseConfig {
+public class TestDatabaseConfig {
 
     @Bean
     public static PropertyPlaceholderConfigurer propertyPlaceholderConfigurer() {
