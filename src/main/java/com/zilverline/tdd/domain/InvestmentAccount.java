@@ -5,21 +5,25 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
 public class InvestmentAccount {
-    @Id
+    @Id @GeneratedValue
     private Long id;
 
     @OneToMany(cascade={CascadeType.PERSIST}, mappedBy="investmentAccount")
     private Set<Participant> participants = new HashSet<Participant>();
 
     @Embedded
+    @AttributeOverride(name = "amount", column = @Column(name = "balance"))
     private Money balance;
 
     public InvestmentAccount() {
@@ -31,6 +35,7 @@ public class InvestmentAccount {
     }
 
     public void addParticipantShares(Participant participant) {
+        participant.setInvestmentAccount(this);
         participants.add(participant);
     }
 
@@ -60,4 +65,10 @@ public class InvestmentAccount {
     public Set<Participant> getParticipants() {
       return Collections.unmodifiableSet(participants);
     }
+
+    @Override
+    public String toString() {
+        return "InvestmentAccount(id=" + id + ", balance=" + balance + ")";
+    }
+
 }

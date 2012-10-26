@@ -1,6 +1,8 @@
 package com.zilverline.tdd.domain;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,10 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
-
 @Entity
 public class Participant {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
 
     @Basic
@@ -24,14 +26,15 @@ public class Participant {
     private InvestmentAccount investmentAccount;
 
     @Embedded
+    @AttributeOverride(name = "amount", column = @Column(name = "balance"))
     private Money balance = Money.ZERO;
 
     public Participant() {
     }
 
     public Participant(String bankAccountNumber, long shares) {
-      this.bankAccountNumber = bankAccountNumber;
-      this.shares = shares;
+        this.bankAccountNumber = bankAccountNumber;
+        this.shares = shares;
     }
 
     public long getShares() {
@@ -55,8 +58,13 @@ public class Participant {
         return bankAccountNumber;
     }
 
+    public void setInvestmentAccount(InvestmentAccount investmentAccount) {
+        this.investmentAccount = investmentAccount;
+    }
+
     @Override
     public String toString() {
         return "Participant(id=" + id + ")";
     }
+
 }

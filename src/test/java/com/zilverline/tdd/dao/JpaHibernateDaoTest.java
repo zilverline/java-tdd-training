@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,6 +20,7 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import org.springframework.transaction.annotation.Transactional;
 
 import com.zilverline.tdd.config.PersistenceConfig;
+import com.zilverline.tdd.domain.InvestmentAccount;
 import com.zilverline.tdd.domain.Money;
 import com.zilverline.tdd.domain.Participant;
 
@@ -33,6 +35,14 @@ public class JpaHibernateDaoTest {
 
     @Inject
     private JpaHibernateDao subject;
+
+    private InvestmentAccount investmentAccount;
+
+    @Before
+    public void setUp() {
+        investmentAccount = new InvestmentAccount();
+        entityManager.persist(investmentAccount);
+    }
 
     @Test
     public void test_find_minimum_balance() {
@@ -54,9 +64,10 @@ public class JpaHibernateDaoTest {
     }
 
     private Participant givenParticipantWithBalance(Money balance) {
-        Participant result = new Participant();
-        result.addBalance(balance);
-        entityManager.persist(result);
-        return result;
+        Participant participant = new Participant("1233211234", 1);
+        investmentAccount.addParticipantShares(participant);
+        participant.addBalance(balance);
+        entityManager.persist(participant);
+        return participant;
     }
 }
