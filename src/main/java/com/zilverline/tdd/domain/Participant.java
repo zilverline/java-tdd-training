@@ -3,6 +3,7 @@ package com.zilverline.tdd.domain;
 import javax.persistence.Basic;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
@@ -10,7 +11,7 @@ import javax.persistence.Transient;
 
 @Entity
 public class Participant {
-    @Id
+    @Id @GeneratedValue
     private Long id;
 
     @Basic
@@ -21,7 +22,7 @@ public class Participant {
 
     @ManyToOne
     private InvestmentAccount investmentAccount;
-    
+
     @Embedded
     private Money balance = Money.ZERO;
 
@@ -29,7 +30,7 @@ public class Participant {
     }
 
     public Participant(String bankAccountNumber, long shares) {
-      this.bankAccountNumber = bankAccountNumber;  
+      this.bankAccountNumber = bankAccountNumber;
       this.shares = shares;
     }
 
@@ -52,5 +53,10 @@ public class Participant {
 
     public String getBankAccountNumber() {
         return bankAccountNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Participant(id=" + id + ")";
     }
 }

@@ -33,6 +33,10 @@ public class Money implements Comparable<Money> {
         return new Money(amount.setScale(SCALE, roundingMode));
     }
 
+    private Money() {
+        this(ZERO.amount);
+    }
+
     private Money(BigDecimal amount) {
         Preconditions.checkArgument(amount.scale() == SCALE, "Incorrect scale {}", amount.scale());
         this.amount = amount;

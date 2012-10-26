@@ -1,8 +1,11 @@
-package com.zilverline.tdd.domain;
+package com.zilverline.tdd.service;
 
 import java.util.Collection;
 
 import javax.inject.Inject;
+
+import com.zilverline.tdd.domain.Participant;
+import com.zilverline.tdd.domain.PaymentProcessor;
 
 public class PayoutService {
 
