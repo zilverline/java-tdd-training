@@ -2,8 +2,6 @@ package com.zilverline.tdd.domain;
 
 import static org.junit.Assert.*;
 
-import static org.hamcrest.CoreMatchers.*;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,8 +22,8 @@ public class InvestmentAccountTest {
 
         subject.distributeBalance();
 
-        assertThat(participant.getBalance(), is(Money.fromEuros(10)));
-        assertThat(subject.getBalance(), is(Money.fromEuros(0)));
+        assertEquals(Money.fromEuros(10), participant.getBalance());
+        assertEquals(Money.fromEuros(0), subject.getBalance());
     }
 
     @Test
@@ -38,9 +36,9 @@ public class InvestmentAccountTest {
 
         subject.distributeBalance();
 
-        assertThat(participant1.getBalance(), is(Money.fromEurosAndCents(7, 50)));
-        assertThat(participant2.getBalance(), is(Money.fromEurosAndCents(2, 50)));
-        assertThat(subject.getBalance(), is(Money.ZERO));
+        assertEquals(Money.fromEurosAndCents(7, 50), participant1.getBalance());
+        assertEquals(Money.fromEurosAndCents(2, 50), participant2.getBalance());
+        assertEquals(Money.ZERO, subject.getBalance());
     }
 
     @Test
@@ -53,9 +51,9 @@ public class InvestmentAccountTest {
 
         subject.distributeBalance();
 
-        assertThat(participant1.getBalance(), is(Money.fromEurosAndCents(6, 66)));
-        assertThat(participant2.getBalance(), is(Money.fromEurosAndCents(3, 33)));
-        assertThat(subject.getBalance(), is(Money.fromCents(1)));
+        assertEquals(Money.fromEurosAndCents(6, 66), participant1.getBalance());
+        assertEquals(Money.fromEurosAndCents(3, 33), participant2.getBalance());
+        assertEquals(Money.fromCents(1), subject.getBalance());
     }
 
     @Test
@@ -65,7 +63,7 @@ public class InvestmentAccountTest {
 
         subject.distributeBalance();
 
-        assertThat(participant.getBalance(), is(Money.fromEuros(0)));
-        assertThat(subject.getBalance(), is(Money.fromEuros(10)));
+        assertEquals(Money.fromEuros(0), participant.getBalance());
+        assertEquals(Money.fromEuros(10), subject.getBalance());
     }
 }
