@@ -1,5 +1,7 @@
 package com.zilverline.tdd.story;
 
+import java.io.File;
+
 import org.jbehave.core.Embeddable;
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
@@ -13,7 +15,7 @@ import org.jbehave.core.steps.InstanceStepsFactory;
 
 /**
  * AbstractStory.java
- * 
+ *
  */
 public abstract class AbstractStory extends JUnitStory implements StoryPathResolver {
 
@@ -32,9 +34,9 @@ public abstract class AbstractStory extends JUnitStory implements StoryPathResol
      */
     return new InstanceStepsFactory(configuration(), this);
   }
-  
+
   @Override
   public String resolve(Class<? extends Embeddable> embeddableClass) {
-    return embeddableClass.getSimpleName().replace("Story", ".story");
+    return "stories" + File.separator + embeddableClass.getSimpleName().replace("Story", ".story");
   }
 }
