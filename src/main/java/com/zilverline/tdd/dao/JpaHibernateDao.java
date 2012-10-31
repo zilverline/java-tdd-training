@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.zilverline.tdd.domain.Money;
 import com.zilverline.tdd.domain.Participant;
 
-@Repository
+@Repository("jpaHibernateDao")
 public class JpaHibernateDao implements ParticipantDao {
 
     @PersistenceContext
