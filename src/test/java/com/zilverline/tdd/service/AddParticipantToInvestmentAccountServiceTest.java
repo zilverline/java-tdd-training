@@ -1,6 +1,9 @@
 package com.zilverline.tdd.service;
 
+import static org.junit.Assert.*;
+
 import org.junit.Before;
+import org.junit.Test;
 
 
 public class AddParticipantToInvestmentAccountServiceTest {
@@ -9,6 +12,11 @@ public class AddParticipantToInvestmentAccountServiceTest {
 
     @Before
     public void setUp() {
+    }
+
+    @Test
+    public void todo() {
+        fail("TODO");
     }
 
 }
