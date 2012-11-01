@@ -12,3 +12,9 @@ To compile and package the application use `mvn clean install`. The first time m
 To start the application use `mvn jetty:run`. Point your browser to `http://localhost:8080/` to see the welcome page.
 
 Maven projects can be easily imported into IDEs such as Eclipse or IntelliJ.
+
+Use:
+
+    git branch -a
+
+to see all of the stages of the exercises
