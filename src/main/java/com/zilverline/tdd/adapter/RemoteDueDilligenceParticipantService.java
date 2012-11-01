@@ -1,7 +1,10 @@
 package com.zilverline.tdd.adapter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -15,13 +18,12 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zilverline.tdd.domain.DueDilligenceParticipantService;
 import com.zilverline.tdd.domain.Liability;
 import com.zilverline.tdd.domain.Participant;
 
 /**
  * RemoteDueDilligenceParticipantService.java
- * 
+ *
  */
 public class RemoteDueDilligenceParticipantService implements DueDilligenceParticipantService {
 
@@ -32,7 +34,7 @@ public class RemoteDueDilligenceParticipantService implements DueDilligenceParti
 
   private String uri;
 
-  private TypeReference<Collection<Liability>> typeReference = new TypeReference<Collection<Liability>>() {
+  private TypeReference<List<Map<String, String>>> typeReference = new TypeReference<List<Map<String, String>>>() {
   };
 
   public RemoteDueDilligenceParticipantService(String uri) {
@@ -53,7 +55,12 @@ public class RemoteDueDilligenceParticipantService implements DueDilligenceParti
     HttpUriRequest request = new HttpGet(uri.concat("/").concat(participant.getBankAccountNumber()));
     HttpResponse response = client.execute(request);
     if (response.getStatusLine().getStatusCode() == 200) {
-      return mapper.readValue(response.getEntity().getContent(), typeReference);
+      List<Map<String, String>> data = mapper.readValue(response.getEntity().getContent(), typeReference);
+      Collection<Liability> result = new ArrayList<Liability>();
+      for (Map<String, String> liability: data) {
+          result.add(new Liability(liability.get("cuase")));
+      }
+      return result;
     } else {
       throw new RuntimeException(response.getAllHeaders().toString());
     }
