@@ -7,8 +7,6 @@ public class PaySmartPaymentProcessor implements PaymentProcessor {
 
     @Override
     public void pay(String bankAccountNumber, Money amount) {
-        // TODO Auto-generated method stub
-
     }
 
 }

@@ -12,4 +12,9 @@ public class IndexController {
     public String index(Model model) {
         return "index";
     }
+
+    @RequestMapping(value = "/home.shtml", method = RequestMethod.GET)
+    public String home(Model model) {
+        return "index";
+    }
 }
