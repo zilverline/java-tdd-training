@@ -15,13 +15,12 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zilverline.tdd.domain.DueDilligenceParticipantService;
 import com.zilverline.tdd.domain.Liability;
 import com.zilverline.tdd.domain.Participant;
 
 /**
  * RemoteDueDilligenceParticipantService.java
- * 
+ *
  */
 public class RemoteDueDilligenceParticipantService implements DueDilligenceParticipantService {
 

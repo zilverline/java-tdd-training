@@ -6,11 +6,11 @@ import javax.inject.Inject;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.zilverline.tdd.domain.DueDilligenceParticipantService;
+import com.zilverline.tdd.adapter.DueDilligenceParticipantService;
 import com.zilverline.tdd.domain.InvestmentAccount;
 import com.zilverline.tdd.domain.Liability;
-import com.zilverline.tdd.domain.SignificantShareholderWithLiabiliesException;
 import com.zilverline.tdd.domain.Participant;
+import com.zilverline.tdd.domain.SignificantShareholderWithLiabiliesException;
 
 public class AddParticipantToInvestmentAccountService {
 

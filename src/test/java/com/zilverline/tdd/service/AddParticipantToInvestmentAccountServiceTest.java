@@ -10,7 +10,7 @@ import java.util.Collections;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.zilverline.tdd.domain.DueDilligenceParticipantService;
+import com.zilverline.tdd.adapter.DueDilligenceParticipantService;
 import com.zilverline.tdd.domain.InvestmentAccount;
 import com.zilverline.tdd.domain.Liability;
 import com.zilverline.tdd.domain.Participant;
